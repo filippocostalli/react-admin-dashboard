@@ -1,0 +1,118 @@
+/*
+The z-index property specifies the stack order of an element.
+An element with greater stack order is always in front of an element with a lower stack order.
+
+The position property specifies the type of positioning method used for an element 
+(static, relative, absolute, fixed, or sticky).
+relative = The element is positioned relative to its normal position, 
+so "left:20px" adds 20 pixels to the element's LEFT position
+*/
+.dropdown {
+  position: relative;
+  z-index: 99;
+}
+
+/*
+outline = line that is drawn around elements, outside the borders, to make the element "stand out".
+*/
+.dropdown__toggle {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  position: relative;
+}
+
+/*
+one rem unit is equal to the computed value of font-size on the root element. 
+*/
+.dropdown__toggle > i {
+  font-size: 2.5rem;
+  color: var(--txt-color);
+}
+
+/*
+display: flex Displays an element as a block-level flex container
+
+align-items property specifies the default alignment for items inside the flexible container.
+center = Items are positioned at the center of the container
+
+
+justify-content property aligns the flexible container's items when the items do not use 
+all available space on the main-axis (horizontally).
+center = Items are positioned in the center of the container
+
+position absolute = The element is positioned relative to its first positioned (not static) ancestor
+element
+
+If position: absolute; or position: fixed; - the top property sets the top edge of an element to a 
+unit above/below the top edge of its nearest positioned ancestor.
+the same for right 
+
+width and height properties set, respectively, the width and the height of an element.
+*/
+.dropdown__toggle-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  height: 25px;
+  width: 25;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: var(--txt-white);
+  font-size: -0.8rem;
+}
+
+/*
+none = The element is completely removed
+
+The calc() function performs a calculation to be used as the property value.
+
+max-content sizing keyword represents the intrinsic maximum width or height of the content. 
+For text content this means that the content will not wrap at all even if it causes overflows.
+
+box-shadow attaches one or more shadows to an element.
+
+overflow specifies what should happen if content overflows an element's box.
+hidden = The overflow is clipped, and the rest of the content will be invisible
+
+transform-origin allows you to change the position of transformed elements.
+transform-origin: x-axis y-axis z-axis|initial|inherit;
+
+transform applies a 2D or 3D transformation to an element. 
+This property allows you to rotate, scale, move, skew, etc., elements.
+scale(x,y)	Defines a 2D scale transformation
+
+transition: property duration timing-function delay|initial|inherit;
+
+*/
+.dropdown__content {
+  /*display: none;*/
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  width: max-content;
+  max-width: 400px;
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transform-origin: top right;
+  transform: scale(0);
+  transition: transform 0.3s ease 0s;
+}
+
+.dropdown__content.active {
+  transform: scale(1);
+  transition: transform 0.5s var(--transition-cubic);
+}
+
+/*
+padding is the space between the element's content and its border.
+*/
+.dropdown__footer {
+  padding: 20px;
+  text-align: center;
+}
